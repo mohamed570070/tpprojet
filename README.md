@@ -62,3 +62,10 @@ Votre chef de projet vous demande de comparer l'utilisation de **Docker** avec d
 ---
 
 
+# Mon projet avec plusieurs images
+
+## Partie 1 : Déploiement de l'infrastructure
+
+Voici l'architecture de mon projet.
+
+![Architecture 1](images/app1port85.png)
