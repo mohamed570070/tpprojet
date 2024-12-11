@@ -122,5 +122,31 @@ RUN python manage.py migrate
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
 
 
+## Dockerfiles des Applications
 
+### APP 2: django-datta-able
 
+```dockerfile
+
+FROM python:3.9-alpine
+
+# Variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Installer les dépendances
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copier les fichiers de l'application
+COPY . .
+
+# Appliquer les migrations
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
+# Générer l'API
+RUN python manage.py generate-api -f
+
+# Lancer l'application avec Gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
