@@ -150,3 +150,25 @@ RUN python manage.py generate-api -f
 
 # Lancer l'application avec Gunicorn
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
+
+APP 3: django-modernize
+dockerfile
+Copier le code
+FROM python:3.9-alpine
+
+# Variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Installer les dépendances
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copier les fichiers de l'application
+COPY . .
+
+# Appliquer les migrations
+RUN python manage.py migrate
+
+# Lancer l'application avec Gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
