@@ -1,18 +1,67 @@
-Projet
+Voici ton texte amélioré avec des éléments de mise en forme pour le rendre plus lisible et structuré sur GitHub :
 
-Partie 1.
+---
 
-J' ai deployé toute la stack de mon infrastructure as code avec 1 seul fichier (docker-compos.yml), bien sur à l'aide des Dockerfile pour chaque application
-J'avais comme consigne de déplyer des applications le plus légèrement possible notamment en utilisant des versions alpines de python (FROM python:3.9-alpine). 
-En effet j'ai également optimisé mes fichiers Dockerfile comme cela (RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt)
-Il m'a également fallu les rendre accessible depuis l'extérieur en configurant des ports spécifiques. Voici un exemple (docker run -d --name flask-adminlte -p 900:5000 flask-adminlte:dev) ICI LE PORT 900
+# Projet
 
-Partie 2.
+## Partie 1 : Déploiement de l'infrastructure
 
-Dans notre cas, il nous a été demandé de déployer 7 applications dont une application statique avec de l'html, dans un environnement de développement avec docker. Tout cela en envoyant seulement une commande docker-compose up --build -d
--d permet ici de pouvoir taper des commandes avoir à faire un ControlC pour arreter sinon cela l'éxécute en continue.
+J'ai déployé toute la stack de mon infrastructure as code avec **un seul fichier** (`docker-compose.yml`), bien sûr, à l'aide des **Dockerfile** pour chaque application.  
+La consigne était de déployer des applications le plus léger possible, notamment en utilisant des versions **Alpine** de Python (par exemple : `FROM python:3.9-alpine`).
 
-Dans mon équipe, nous avons distibué les taches de sortes à ce que chacun travail dans un domaine ou il était le plus à l'aise. Enzo s'est chargé de la documentation à savoir récupérer des applications fonctionnels et mapper notre architecture. Tandis que moi,Mohamed, je me suis chargé de la partie technique en déployant les applications.
+J'ai également optimisé mes fichiers **Dockerfile** de cette manière :
+```dockerfile
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+```
 
-Les frameworks que nous avons utilisé ont choisi en vue de l'apsepct physique mais également des spécialités qu'ils proposent chacun indépendament de autres. Par exemple, l'application flask-adminlte qui offre énorméments de rensignements financiers utile dans la vie d'une entreprise.
+De plus, il m'a fallu rendre les applications accessibles depuis l'extérieur en configurant des ports spécifiques. Par exemple :
+```bash
+docker run -d --name flask-adminlte -p 900:5000 flask-adminlte:dev
+```
+*Ici, le port 900 est exposé*.
 
+## Partie 2 : Déploiement des applications avec Docker
+
+Dans notre projet, il nous a été demandé de déployer **7 applications**, dont une application statique avec du **HTML**, dans un environnement de développement avec **Docker**. Pour ce faire, une seule commande suffit :
+```bash
+docker-compose up --build -d
+```
+
+L'option `-d` permet de lancer les conteneurs en arrière-plan sans avoir à maintenir le terminal ouvert (vous pouvez toujours taper des commandes sans interruption).
+
+### Répartition des tâches
+
+Dans mon équipe, nous avons distribué les tâches de manière à ce que chacun travaille dans un domaine où il était le plus à l'aise.  
+- **Enzo** s'est chargé de la documentation, c'est-à-dire récupérer des applications fonctionnelles et mapper notre architecture.  
+- **Moi, Mohamed**, je me suis chargé de la partie technique en déployant les applications.
+
+### Choix des frameworks
+
+Les frameworks choisis ont été sélectionnés en fonction de leur aspect physique et des spécialisations qu'ils offrent indépendamment des autres. Par exemple, l'application **flask-adminlte**, qui propose une multitude d'informations financières utiles dans la gestion d'une entreprise.
+
+## Partie 3 : Le DevOps
+
+### Qu'est-ce que le DevOps ?
+
+Le **DevOps** est une approche qui facilite la collaboration entre les équipes de **développement** et d'**opérations**. Dans mon projet, je me concentre principalement sur la partie **opérationnelle**, en particulier avec **Docker**. J'utilise Docker pour automatiser le déploiement et la gestion des conteneurs, ce qui garantit la cohérence des environnements et simplifie le processus de mise en production.
+
+### En quoi le DevOps m'a-t-il aidé dans cette mission ?
+
+Le DevOps m'a grandement facilité cette mission en automatisant et simplifiant le processus de déploiement des applications. Grâce à **Docker**, j'ai pu gérer facilement les conteneurs, en ajustant simplement les ports et les noms des applications pour les adapter à mon environnement.  
+Cependant, sans le code des développeurs, je n'aurais pas pu déployer ces applications, car le code source est essentiel pour faire fonctionner les conteneurs.
+
+### Comparaison Docker vs Machines Virtuelles
+
+Votre chef de projet vous demande de comparer l'utilisation de **Docker** avec des **machines virtuelles** (VM).
+
+- **Docker** est **plus léger** et **plus rapide** que les machines virtuelles, car il utilise moins de ressources en partageant le noyau du système hôte, tandis qu'une VM nécessite un système d'exploitation complet.
+- **Docker** est également **plus portable**, facilitant le déploiement dans différents environnements.  
+- En revanche, les **VMs** offrent une **isolement complet** du système, tandis que **Docker** s'isole uniquement au niveau de l'application.
+
+### Outils similaires à Docker
+
+À ma connaissance, **Kubernetes** est un autre outil similaire à Docker. Il s'agit d'un orchestrateur de conteneurs qui permet de gérer, déployer et scaler des applications conteneurisées à grande échelle, contrairement à Docker qui est plus axé sur le déploiement individuel de conteneurs.
+
+---
+
+Cette version est plus structurée, avec des titres et des sous-titres pour bien séparer chaque partie. J'ai également ajouté des exemples de commandes en code, et mis en valeur les éléments importants avec des **gras** et des *italiques*. Cela améliore la lisibilité et rend le tout plus professionnel pour GitHub.
