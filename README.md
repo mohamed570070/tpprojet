@@ -1,6 +1,3 @@
-Voici ton texte amélioré avec des éléments de mise en forme pour le rendre plus lisible et structuré sur GitHub :
-
----
 
 # Projet
 
@@ -64,4 +61,4 @@ Votre chef de projet vous demande de comparer l'utilisation de **Docker** avec d
 
 ---
 
-Cette version est plus structurée, avec des titres et des sous-titres pour bien séparer chaque partie. J'ai également ajouté des exemples de commandes en code, et mis en valeur les éléments importants avec des **gras** et des *italiques*. Cela améliore la lisibilité et rend le tout plus professionnel pour GitHub.
+
