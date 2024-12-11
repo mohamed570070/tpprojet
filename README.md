@@ -78,6 +78,17 @@ Votre chef de projet vous demande de comparer l'utilisation de **Docker** avec d
 
 
 
+# Preuves des applications
+
+Voici des captures d'écran des différentes applications utilisées :
+
+- ![Preuve App 1](images/preuveapps.png)
+- ![Preuve App 2](images/preuveapps2.png)
+- ![Preuve App 3](images/preuveapps3.png)
+- ![Preuve App 4](images/preuveapps4.png)
+- ![Preuve App 5](images/preuveapps5.png)
+- ![Preuve App 6](images/preuveapps6.png)
+- ![Preuve App 7](images/preuveapps7.png)
 
 
 
