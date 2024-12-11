@@ -83,7 +83,7 @@ Votre chef de projet vous demande de comparer l'utilisation de **Docker** avec d
 
 Voici des captures d'écran des différentes applications utilisées :
 
-![Preuve App 1](images/peuveapps.png)
+![Preuve App 1](images/peuveapps.PNG)
 ![Preuve App 2](images/peuveapps2.png)
 ![Preuve App 3](images/peuveapps3.png)
 ![Preuve App 4](images/peuveapps4.png)
