@@ -65,6 +65,8 @@ Votre chef de projet vous demande de comparer l'utilisation de **Docker** avec d
 # Mon projet avec plusieurs images
 
 ## Partie 1 : Déploiement de l'infrastructure
+![App port 90](images/app 2 port 90.PNG)
+![App port 100](images/app 3 port 100.PNG)
 
 
 
