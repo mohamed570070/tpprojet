@@ -92,6 +92,34 @@ Voici des captures d'écran des différentes applications utilisées :
 ![Preuve App 7](images/preuveapps7.PNG)
 
 
+## Dockerfiles des Applications
+
+### APP 1: django-corporate-dashboard
+
+```dockerfile
+FROM python:3.9-alpine
+
+# Variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Installer les dépendances
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copier les fichiers de l'application
+COPY . .
+
+# Ajouter les permissions pour le fichier d'entrée
+RUN chmod +x /app/entrypoint.sh
+
+# Appliquer les migrations de la base de données
+RUN python manage.py migrate
+
+# Lancer l'application avec Gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
 
 
 
