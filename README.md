@@ -172,3 +172,98 @@ RUN python manage.py migrate
 
 # Lancer l'application avec Gunicorn
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
+
+APP 4: django-volt-dashboard
+dockerfile
+Copier le code
+FROM python:3.9-alpine
+
+# Variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Installer les dépendances
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copier les fichiers de l'application
+COPY . .
+
+# Appliquer les migrations
+RUN python manage.py migrate
+
+# Lancer l'application avec Gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
+APP 5: flask-adminlte
+dockerfile
+Copier le code
+FROM python:3.10-alpine
+
+# Variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Installer les dépendances
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Copier les fichiers de l'application
+COPY . .
+
+# Lancer l'application avec Gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "run:app"]
+APP 6: html5up-fractal
+dockerfile
+Copier le code
+FROM nginx:alpine
+
+# Copier la configuration personnalisée
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copier les fichiers HTML
+COPY . /usr/share/nginx/html
+
+# Exposer le port pour l'application
+EXPOSE 6000
+
+# Lancer le serveur Nginx
+CMD ["nginx", "-g", "daemon off;"]
+APP 7: sample-django-extended-user-profile
+dockerfile
+Copier le code
+FROM python:3.9-alpine
+
+# Installer les dépendances système nécessaires
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    libjpeg-turbo-dev \
+    zlib-dev \
+    libwebp-dev \
+    tiff-dev \
+    libpng-dev \
+    freetype-dev \
+    lcms2-dev \
+    openjpeg-dev \
+    libimagequant-dev \
+    libxcb-dev \
+    libffi-dev \
+    && pip install --upgrade pip
+
+WORKDIR /app
+
+# Installer les dépendances Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copier les fichiers de l'application
+COPY . .
+
+# Ajouter les permissions pour le fichier d'entrée
+RUN chmod +x /app/entrypoint.sh
+
+# Appliquer les migrations
+RUN python manage.py migrate
+
+# Lancer l'application avec Gunicorn
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
