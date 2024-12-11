@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  django-corporate-dashboard:
+    image: django-corporate-dashboard:dev
+    build:
+      context: ./django-corporate-dashboard
+    container_name: django-corporate-dashboard
+    ports:
+      - "85:1000"
+
+  django-datta-able:
+    image: django-datta-able:dev
+    build:
+      context: ./django-datta-able
+    container_name: django-datta-able
+    ports:
+      - "90:2000"
+
+  django-modernize:
+    image: django-modernize:dev
+    build:
+      context: ./django-modernize
+    container_name: django-modernize
+    ports:
+      - "100:3000"
+
+  django-volt-dashboard:
+    image: django-volt-dashboard:dev
+    build:
+      context: ./django-volt-dashboard
+    container_name: django-volt-dashboard
+    ports:
+      - "800:4000"
+
+  flask-adminlte:
+    image: flask-adminlte:dev
+    build:
+      context: ./flask-adminlte
+    container_name: flask-adminlte
+    ports:
+      - "900:5000"
+
+  html5up-fractal:
+    image: html5up-fractal:dev
+    build:
+      context: ./html5up-fractal
+    container_name: html5up-fractal
+    ports:
+      - "950:6000"
+
+  sample-django-extended-user-profile:
+    image: sample-django-extended-user-profile:dev
+    build:
+      context: ./sample-django-extended-user-profile
+    container_name: sample-django-extended-user-profile
+    ports:
+      - "965:7000"
